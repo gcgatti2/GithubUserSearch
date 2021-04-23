@@ -7,7 +7,7 @@ Stack: Kotlin, RxJava, RxBinding, Retrofit.
 
 Used MVVM architecture. 
 
-![Alt Text](https://gifyu.com/image/tjyB)
+![Alt Text](https://giphy.com/gifs/ph3MelwLGa2qK7TSDS)
 
 
 
