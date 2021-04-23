@@ -1,5 +1,7 @@
-package com.example.githubrepoapp
+package com.example.githubrepoapp.data
 
+import com.example.githubrepoapp.BuildConfig
+import com.example.githubrepoapp.token
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -9,16 +11,17 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
 interface GithubUserApi {
 
     @GET("/search/users")
-    fun getGithubRepositories(@Query("q") query: String): Single<GithubUsers>
+    fun getGithubRepositories(@Query("q") query: String): Single<Response<GithubUsers>>
 
-    @GET("/users")
-    fun getUserRepoCount(@Query("username") username: String): Single<RepoCount>
+    @GET("/users/{username}")
+    fun getUserRepoCount(@Path("username") username: String): Single<Response<RepoCount>>
 
     companion object {
 
@@ -43,6 +46,7 @@ interface GithubUserApi {
             .client(client)
             .build()
 
-        fun provideGithubService() = retrofit.create(GithubUserApi::class.java)
+        fun provideGithubService() = retrofit.create(
+            GithubUserApi::class.java)
     }
 }

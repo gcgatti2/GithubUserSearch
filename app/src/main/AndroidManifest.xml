@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GithubRepoApp">
-        <activity android:name=".GithubSearchActivity">
+        <activity android:name=".presentation.GithubSearchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

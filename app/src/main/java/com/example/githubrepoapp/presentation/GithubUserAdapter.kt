@@ -1,5 +1,6 @@
-package com.example.githubrepoapp
+package com.example.githubrepoapp.presentation
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.githubrepoapp.data.GithubUser
+import com.example.githubrepoapp.R
 
 class GithubUserAdapter: RecyclerView.Adapter<GithubUserAdapter.ViewHolder>() {
 
@@ -19,11 +22,18 @@ class GithubUserAdapter: RecyclerView.Adapter<GithubUserAdapter.ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item_github_user, parent, false))
+        return ViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.list_item_github_user,
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount() = repos.size
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val repository = repos[position]
 
@@ -32,7 +42,7 @@ class GithubUserAdapter: RecyclerView.Adapter<GithubUserAdapter.ViewHolder>() {
             .load(repository.avatarUrl)
             .into(holder.imgUser)
 
-        holder.tvUsername.text = repository.name
+        holder.tvUsername.text = repository.name + " (${repository.repoCount ?: 0})"
     }
 
     fun submitData(newRepos: List<GithubUser>){

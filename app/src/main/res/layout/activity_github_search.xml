@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GithubSearchActivity">
+    tools:context=".presentation.GithubSearchActivity">
 
     <EditText
         android:id="@+id/etGithubSearch"
@@ -27,11 +27,12 @@
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/rvGithubUsers"
-        app:layout_constraintBottom_toBottomOf="@id/rvGithubUsers"
-        app:layout_constraintStart_toStartOf="@id/rvGithubUsers"
-        app:layout_constraintEnd_toEndOf="@id/rvGithubUsers"
-        app:layout_constraintVertical_bias="0.4"/>
+        app:layout_constraintTop_toBottomOf="@id/etGithubSearch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tvMessage"
@@ -40,6 +41,10 @@
         app:layout_constraintTop_toBottomOf="@id/etGithubSearch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        android:gravity="center"
+        tools:text="@string/query_minimum_message"
+        android:textSize="24sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

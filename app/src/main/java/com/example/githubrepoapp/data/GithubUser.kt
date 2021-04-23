@@ -1,4 +1,4 @@
-package com.example.githubrepoapp
+package com.example.githubrepoapp.data
 
 import com.squareup.moshi.Json
 

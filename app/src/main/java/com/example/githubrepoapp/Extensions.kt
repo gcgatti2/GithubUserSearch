@@ -20,8 +20,6 @@ import com.google.android.material.snackbar.Snackbar
     Taken from: https://zhuinden.medium.com/simple-one-liner-viewbinding-in-fragments-and-activities-with-kotlin-961430c6c07c
  */
 
-val token = "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"
-
 inline fun <T : ViewBinding> AppCompatActivity.viewBinding(
     crossinline bindingInflater: (LayoutInflater) -> T) =
     lazy(LazyThreadSafetyMode.NONE) {

@@ -1,4 +1,5 @@
 package com.example.githubrepoapp
 
-class RateLimitException {
-}
+import java.lang.RuntimeException
+
+class RateLimitException: RuntimeException()

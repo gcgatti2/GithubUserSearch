@@ -7,7 +7,9 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubrepoapp.*
 import com.example.githubrepoapp.databinding.ActivityGithubSearchBinding
+import com.jakewharton.rxbinding3.widget.textChanges
 
+@Suppress("WHEN_ENUM_CAN_BE_NULL_IN_JAVA")
 class GithubSearchActivity : AppCompatActivity() {
 
     private val githubUserAdapter = GithubUserAdapter()
@@ -19,6 +21,7 @@ class GithubSearchActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupRecyclerview()
+        viewModel.setSearchQueryObservable(binding.etGithubSearch.textChanges())
         viewModel.getState().observe(this, Observer { state->
             when(state) {
                 GithubUserViewModel.State.LOADING -> binding.progressBar.makeVisible()
@@ -31,6 +34,16 @@ class GithubSearchActivity : AppCompatActivity() {
         })
         viewModel.getGithubUsers().observe(this, Observer {
             githubUserAdapter.submitData(it)
+        })
+        viewModel.getMessage().observe(this, Observer { message->
+            message?.let {
+                binding.tvMessage.makeVisible()
+                binding.rvGithubUsers.makeGone()
+                binding.tvMessage.text = message
+            } ?: run {
+                binding.tvMessage.makeGone()
+                binding.rvGithubUsers.makeVisible()
+            }
         })
     }
 
