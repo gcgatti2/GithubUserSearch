@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Github Search Demo</string>
+    <string name="hint_github_user_search">Search Github User Here ...</string>
+    <string name="query_minimum_message">Query must be at least 3 characters</string>
+    <string name="api_rate_limit_message">Github API Rate Limit Hit! Please try after a couple of minutes.</string>
+</resources>
