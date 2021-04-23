@@ -7,6 +7,5 @@ Stack: Kotlin, RxJava, RxBinding, Retrofit.
 
 Used MVVM architecture. 
 
-![til](./app/src/main/res/drawable/github_search.gif)
-
+<img src="./app/src/main/res/drawable/github_search.gif" width="250" height="250"/>
 
